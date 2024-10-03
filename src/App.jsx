@@ -12,6 +12,7 @@ import { ConcertContext } from "./components/context"
 import { useState } from "react"
 import Faq from "./pages/Faq"
 import Mentions from "./pages/Mentions"
+import Concert from "./pages/Concert"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Map" element={<Map />} />
         <Route path="/Partenaires" element={<Partenaires />} />
+        <Route path="/Concert" element={<Concert />} />
         <Route path="/Programme" element={<Programme />} />
         <Route path="/Details" element={<Details />} />
         <Route path="/Faq" element={<Faq />} /> 
