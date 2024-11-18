@@ -3,7 +3,7 @@ import { Col, Image, Row } from "react-bootstrap";
 
 
 function Partenaires() {
-    const [datas, setDatas] = useState([]);    
+    const [datas, setDatas] = useState([]);
     const [sponsors, setSponsors] = useState([]);
     const [technique, setTechnique] = useState([]);
     const [logistique, setLogistique] = useState([]);
@@ -45,7 +45,7 @@ function Partenaires() {
             //console.log(data)
             if (data.code === "rest_no_route") { throw "error:rest_no_route" }
             else {
-                setDatas(data);                
+                setDatas(data);
                 data.map((item) => sortingPartnersByCategory(item.acf.type, item));
                 //console.log("sponsors in use effect");
                 //console.log(sponsors);
@@ -56,35 +56,42 @@ function Partenaires() {
             //console.log(error)
         }
     }
-    useEffect(() => {  
+    useEffect(() => {
         fetchWordPressData();
     }, []);
-    
+
 
     function Sponsors() {
         if (sponsors.length > 0) {
             return (
                 <>
-                    <Row className={"m-3 border rounded bg-secondary justify-content-around"}>
-                        <h1 className="colorPurple"><Image src="/images/title4.png" />Sponsor</h1>
-                        {sponsors.map((item) => (
+                    <div className="bg-light border rounded ">
+                        <div className="lightningBg border rounded ">
+                            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Sponsors</h1>
+                        </div>
+                        <Row className={"p-3 m-md-5 border rounded bg-secondary justify-content-around"}>
+                            {sponsors.map((item) => (
 
-                            <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 100}>
+                                <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 100}>
 
-                                <h2 className="text-center"> {item.acf.nom}</h2>
-                                <img src={item.acf.logo.link} alt="" />
+                                    <h2 className="text-center"> {item.acf.nom}</h2>
+                                    <img src={item.acf.logo.link} alt="" />
 
-                            </Col>
-                        ))}
-                    </Row>
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
                 </>
             )
         } else return (
             <>
-                <Row className={"m-3 border rounded bg-light "}>
-                    <h1 className="colorPurple"><Image src="/images/title3.png" />Sponsors<Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" /></h1>
+                <div className={"p-3 m-md-5 border rounded bg-secondary"}>
+                    <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Sponsors</h1>
+                    </div>
+                    <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
 
-                </Row>
+                </div>
             </>
         )
     }
@@ -93,26 +100,33 @@ function Partenaires() {
         if (technique.length > 0) {
             return (
                 <>
-                    <Row className={"m-3 border rounded bg-secondary justify-content-around"}>
-                        <h1 className="colorBlue"><Image src="/images/title2.png" />Technique</h1>
-                        {technique.map((item) => (
+                    <div className="bg-light border rounded ">
+                        <div className="lightningBg border rounded ">
+                            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Technique</h1>
+                        </div>
+                        <Row className={"p-3 m-md-5 border rounded bg-secondary justify-content-around"}>
+                            {technique.map((item) => (
 
-                            <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 1000}>
+                                <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 1000}>
 
-                                <h2 className="text-center"> {item.acf.nom}</h2>
-                                <img src={item.acf.logo.link} alt="" />
+                                    <h2 className="text-center"> {item.acf.nom}</h2>
+                                    <img src={item.acf.logo.link} alt="" />
 
-                            </Col>
-                        ))}
-                    </Row>
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
                 </>
             )
         } else return (
             <>
-                <Row className={"m-3 border rounded bg-light "}>
-                    <h1 className="colorBlue"><Image src="/images/title2.png" />Technique<Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" /></h1>
+                <div className={"p-3 m-md-5 border rounded bg-secondary"}>
+                    <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Technique</h1>
+                    </div>
+                    <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
 
-                </Row>
+                </div>
             </>
         )
 
@@ -122,26 +136,33 @@ function Partenaires() {
         if (logistique.length > 0) {
             return (
                 <>
-                    <Row className={"m-3 border rounded bg-secondary justify-content-around"}>
-                        <h1 className="colorGreen"><Image src="/images/title1.png" />Logistique</h1>
-                        {logistique.map((item) => (
+                    <div className="bg-light border rounded ">
+                        <div className="lightningBg border rounded ">
+                            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Logistique</h1>
+                        </div>
+                        <Row className={"p-3 m-md-5 border rounded bg-secondary justify-content-around"}>
+                            {logistique.map((item) => (
 
-                            <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 10000}>
+                                <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 10000}>
 
-                                <h2 className="text-center"> {item.acf.nom}</h2>
-                                <img src={item.acf.logo.link} alt="" />
+                                    <h5 className="text-center"> {item.acf.nom}</h5>
+                                    <img src={item.acf.logo.link} alt="" />
 
-                            </Col>
-                        ))}
-                    </Row>
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
                 </>
             )
         } else return (
             <>
-                <Row className={"m-3 border rounded bg-light "}>
-                    <h1 className="colorGreen"><Image src="/images/title1.png" />Logistique<Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" /></h1>
+                <div className={"p-3 m-md-5 border rounded bg-secondary"}>
+                    <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Logistique</h1>
+                    </div>
+                    <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
 
-                </Row>
+                </div>
             </>
         )
 
@@ -150,27 +171,32 @@ function Partenaires() {
     function Alimentation() {
         if (alimentation.length > 0) {
             return (
-                <>
-                    <Row className={"m-3 border rounded bg-secondary justify-content-around"}>
-                        <h1 className="colorRed"><Image src="/images/title4.png" />Alimentation</h1>
+                <div className="bg-light border rounded ">
+                    <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Alimentation</h1>
+                    </div>
+                    <Row className={"p-3 m-md-5 border rounded bg-secondary justify-content-around"}>
                         {alimentation.map((item) => (
 
-                            <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id + 100000}>
+                            <Col className="col-11 col-md-5 col-lg-4 p-3 m-2 bg-light border rounded shadow d-flex flex-column " key={item.id + 100000}>
 
-                                <h2 className="text-center"> {item.acf.nom}</h2>
+                                <h5 className="text-center"> {item.acf.nom}</h5>
                                 <img src={item.acf.logo.link} alt="" />
 
                             </Col>
                         ))}
                     </Row>
-                </>
+                </div>
             )
         } else return (
             <>
-                <Row className={"m-3 border rounded bg-light "}>
-                    <h1 className="colorRed"><Image src="/images/title4.png" />Alimentation<Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" /></h1>
+                <div className={"p-3 m-md-5 border rounded bg-secondary"}>
+                    <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">Alimentation</h1>
+                    </div>
+                    <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
 
-                </Row>
+                </div>
             </>
         )
 
@@ -182,7 +208,9 @@ function Partenaires() {
 
     return (
         <div>
-
+            <div className="lightningBg border rounded ">
+                <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">PARTENAIRES</h1>
+            </div>
             <nav >
                 <Sponsors />
                 <Technique />

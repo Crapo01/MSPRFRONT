@@ -66,7 +66,10 @@ function Concerts() {
     return (
 
         <div className={"p-3 m-md-5 border rounded bg-light"}>
-            <h1 className="sectionTitle colorOrange"><Image src="/images/title3.png" />CONCERTS</h1>
+            <div className="lightningBg border rounded">
+            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CONCERTS</h1>
+            </div>
+            
             <Groupes />
         </div>
 

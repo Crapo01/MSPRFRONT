@@ -10,9 +10,8 @@ function Home() {
     return (
         <>
             <Loader/>
-            <Actu />
-            <Programmation></Programmation>
             <Concerts />
+            <Actu />            
             <Shop/>            
             <CarteMini/>
             

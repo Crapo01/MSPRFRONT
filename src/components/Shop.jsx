@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 function Shop() {
     return (
 
-        <Row className={"py-3 my-5 border rounded bg-light "}>
-            <h1 className="sectionTitle colorBlue d-flex justify-content-around"><Image src="/images/title4.png" />BOUTIQUE<Image src="/images/title1.png" /></h1>
-            <a target="_blank" style={{ textDecoration: "none" }} href="https://nationsoundluc.rf.gd/wpdb/boutique/" className="d-flex justify-content-around hovering">
-            <div>
-                <img src="/images/entree1jour.png" alt="entree 1 jour" className="img-fluid mx-auto" /> 
-                <h2 className="text-center">Acceder à la boutique</h2>
-                </div>               
-            </a>          
-            
-        </Row>
+        <div className={"p-3 m-md-5 border rounded bg-secondary"}>
+            <div className="lightningBg border rounded">
+            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold ">BOUTIQUE</h1>
+            </div>
+            <div className="rounded m-2 d-flex flex-xl-row flex-column justify-content-around align-items-center bg-light p-3">
+            <img src="/images/entree1jour.png" alt="entree 1 jour" className="img-fluid mx-auto " />
+            <a target="_blank" href="https://nationsoundmetal.rf.gd/wp" ><button className='p-3 m-3 rounded font-weight-bolder bg-info text-dark text-decoration-none h3 text-center lobsterFont'>Acceder à la boutique</button></a> 
+            <img src="/images/entree3jours.png" alt="entree 1 jour" className="img-fluid mx-auto " />
+            </div>
+        </div>    
 
     );
 };

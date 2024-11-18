@@ -32,8 +32,15 @@ useEffect(() => {
   
   return (
     <>
-    <Row className="justify-content-center my-5 mx-md-5 p-5 border rounded bg-light">
-    <h1 className="sectionTitle colorRed d-flex justify-content-around"><Image src="/images/title1.png"/>CARTE<Image src="/images/title3.png"/></h1>
+     <div className={"p-3 m-md-5 border rounded bg-light"}>
+            <div className="lightningBg border rounded">
+            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CARTE</h1>
+            </div>
+            
+            
+
+    <Row className="justify-content-center my-5 mx-md-5 p-5 border rounded metalBg">
+    
     <Link to={"/Map"}> 
     <MapContainer  style={{ height: '300px', width: '100%'}} center={[48.8382 ,2.4427]} zoom={15} scrollWheelZoom={false} locate={{setView: true, maxZoom: 16}}>
     
@@ -60,6 +67,7 @@ useEffect(() => {
     </MapContainer>
     </Link>
     </Row>
+    </div>
     </>
 
   );

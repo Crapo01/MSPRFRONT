@@ -155,6 +155,7 @@ setLocalConcerts(data)
       const map = useMap()
       map.locate({ setView: false, maxZoom: 14 });
       function onLocationFound(e) {
+        console.log("located at:"+position)
 
         virtualPosition ? setPosition({ lat: 48.837078, lng: 2.442521 }) : setPosition(e.latlng)
         //console.log("located at:"+position)
@@ -181,7 +182,9 @@ setLocalConcerts(data)
   return (
     <>
       <Row className="  m-md-5 p-2 border rounded bg-light">
-        <h1 className="sectionTitle colorRed linkNone d-flex justify-content-around "><Image src="/images/title1.png" />CARTE<Image src="/images/title4.png" /></h1>
+      <div className="lightningBg border rounded ">
+                        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CARTE</h1>
+                    </div>
         <Col className="d-flex justify-content-center">
           <div className="p-2">
             <p className="text-style4">Type de marqueur</p>

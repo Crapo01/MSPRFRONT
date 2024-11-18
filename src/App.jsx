@@ -27,7 +27,7 @@ function App() {
       }}>
        <Container >
       <Header></Header>
-
+      <div className="maxheight">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Map" element={<Map />} />
@@ -38,6 +38,7 @@ function App() {
         <Route path="/Faq" element={<Faq />} /> 
         <Route path="/Mentions" element={<Mentions />} />       
       </Routes>
+      </div>
       <Footer></Footer>
       </Container> 
     </ConcertContext.Provider>

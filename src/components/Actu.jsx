@@ -82,12 +82,14 @@ function Actu() {
     return (
         
             
-            <div className={"p-3 my-5 mx-md-5 border rounded bg-light"}>
-            <h1 className="sectionTitle colorGreen"><Image src="/images/title1.png"/>INFOS</h1>
-            
-                <PrioEvent/>
-                <NormalEvent/>
-            </div>
+        <div className={"p-3 m-md-5 border rounded bg-light"}>
+        <div className="lightningBg border rounded">
+        <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">INFORMATIONS</h1>
+        </div>
+        
+        <PrioEvent/>
+            <NormalEvent/>
+    </div>
         
     );
 };

@@ -38,14 +38,14 @@ function Faq() {
         if (datas.length > 0) {
             return (
                 <>
-                    <Row className={"m-3 border rounded bg-secondary justify-content-around"}>
-                        <h1 className="colorRed"><Image src="/images/title4.png" />Foire aux questions</h1>
+                    <Row className="lightningBg border rounded ">
+                    <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">FOIRE AUX QUESTIONS</h1>
                         {datas.map((item) => (
 
-                            <Col className="col-11 p-3 m-2 bg-light border rounded shadow d-flex flex-column" key={item.id }>
+                            <Col className="col-11 m-2 bg-light border rounded d-flex flex-column" key={item.id }>
 
-                                <h2 className="text-center "> {item.acf.question}</h2>
-                                <p className="text-center h2"> {item.acf.reponse}</p>
+                                <h2 className="text-center bg-light border rounded shadow "> {item.acf.question}</h2>
+                                <p className="text-center p-3 "> {item.acf.reponse}</p>
                                 
 
                             </Col>
@@ -55,10 +55,13 @@ function Faq() {
             )
         } else return (
             <>
-                <Row className={"m-3 border rounded bg-light "}>
-                    <h1 className="colorRed"><Image src="/images/title4.png" />Foire aux questions<Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" /></h1>
+                <Row className="lightningBg border rounded ">
+                <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold ">FOIRE AUX QUESTIONS</h1>
 
                 </Row>
+                <div className=" p-3 m-2 bg-light border rounded shadow ">
+                <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
+                </div>
             </>
         )
 

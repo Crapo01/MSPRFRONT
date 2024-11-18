@@ -3,7 +3,7 @@ import { Col, Image, Row } from "react-bootstrap";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 function Programmation() {
-    const [localDatas,setLocalDatas] = useLocalStorage("programmation")
+    const [localDatas, setLocalDatas] = useLocalStorage("programmation")
     const [datas, setDatas] = useState([]);
     const [filterDay, setFilterDay] = useState("tout");
     const [filterType, setFilterType] = useState("tout");
@@ -23,7 +23,7 @@ function Programmation() {
             const response = await fetch("https://nationsoundluc.rf.gd/wpdb/wp-json/acf/v3/programmation");
             const data = await response.json();
             //console.log(data)
-            if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data);setLocalDatas(data) };
+            if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data); setLocalDatas(data) };
 
         } catch (error) {
             //console.log("Une erreur est survenue dans l'appel API: ")
@@ -33,7 +33,8 @@ function Programmation() {
     useEffect(() => {
         //console.log(localDatas);
         if (localDatas) {//console.log("uselocalstorage");
-            setDatas(localDatas)}
+            setDatas(localDatas)
+        }
         fetchWordPressData();
     }, []);
 
@@ -86,18 +87,18 @@ function Programmation() {
                         <Col >
                             <Row className="justify-content-evenly">
 
-                            {filteredEvents.map((item) => (
+                                {filteredEvents.map((item) => (
 
-                                <Col  className="col-md-6 col-lg-4" key={item.id} >
-                                    <div className={"m-3"}>
-                                    <div className={"p-2 border border-success rounded card shadow"} >
-                                        <h2 className="card-title"> {item.acf.nom}</h2>
-                                        <div>le {item.acf.date} à {item.acf.heure}</div>
-                                        <div>Scène: {item.acf.scene}</div>
-                                    </div>
-                                    </div>
-                                </Col>
-                            ))}
+                                    <Col className="col-md-6 col-lg-4" key={item.id} >
+                                        <div className={"m-3"}>
+                                            <div className={"p-2 border border-success rounded card shadow"} >
+                                                <h2 className="card-title"> {item.acf.nom}</h2>
+                                                <div>le {item.acf.date} à {item.acf.heure}</div>
+                                                <div>Scène: {item.acf.scene}</div>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                ))}
                             </Row>
                         </Col>
                     </Row>
@@ -106,18 +107,22 @@ function Programmation() {
                 </>
             )
         } else {
-            return <h2><Image src="/images/loading.gif"/>Pas d'evenements pour le moment</h2>
+            return <h2><Image src="/images/loading.gif" />Pas d'evenements pour le moment</h2>
         }
     }
 
+
+
     return (
-        
-            <div className={"p-3 my-5 border rounded bg-light"}>
-            <h1 className="sectionTitle colorPurple"><Image src="/images/title2.png"/>PROGRAMMATION</h1>
-                <Evenement />
+        <div className={"p-3 m-md-5 border rounded bg-light"}>
+            <div className="lightningBg border rounded ">
+                <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">PROGRAMMATION</h1>
             </div>
-        
+            <Evenement />
+        </div>
     );
+
+
 };
 
 export default Programmation;
