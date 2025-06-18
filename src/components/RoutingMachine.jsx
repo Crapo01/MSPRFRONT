@@ -4,6 +4,8 @@ import "leaflet-routing-machine";
 
 const createRoutineMachineLayer = (props) => {
   console.log({props})
+  
+renderServerUp();
   const instance = L.Routing.control({
     waypoints: [
       L.latLng(props.start),
@@ -27,5 +29,18 @@ const createRoutineMachineLayer = (props) => {
 };
 
 const RoutingMachine = createControlComponent(createRoutineMachineLayer);
+
+async function renderServerUp() {
+        try {
+            const response = await fetch("https://msprback-cms-reworked.onrender.com/api/access/viewer");            
+            const data = await response.json();
+            //alert("render service on");
+            
+
+        } catch (error) {
+            alert("Une erreur est survenue dans l'appel Render ")
+            //console.log(error)
+        }
+    }
 
 export default RoutingMachine;

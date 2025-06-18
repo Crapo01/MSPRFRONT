@@ -9,14 +9,14 @@ function Concerts() {
     const [datas, setDatas] = useState(false);
     async function fetchWordPressData() {
         try {
-            const response = await fetch("https://nationsoundluc.rf.gd/wpdb/wp-json/acf/v3/concerts");
-            // const response = await fetch("http://localhost/ns_hl_wp/wp-json/acf/v3/concerts");
+            //const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/concerts");  
+            const response = await fetch("http://localhost/wordpress/wp-json/acf/v3/concerts");          
             const data = await response.json();
             //console.log(data)
             if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data);setLocalDatas(data) };
 
         } catch (error) {
-            //console.log("Une erreur est survenue dans l'appel API: ")
+            console.log("Une erreur est survenue dans l'appel API: ")
             //console.log(error)
         }
     }

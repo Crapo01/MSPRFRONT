@@ -9,7 +9,7 @@ function Faq() {
     
     async function fetchWordPressData() {
         try {
-            const response = await fetch("https://nationsoundluc.rf.gd/wpdb/wp-json/acf/v3/questions");
+            const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/questions");
             // const response = await fetch("http://localhost/ns_hl_wp/wp-json/acf/v3/questions");
             const data = await response.json();
             //console.log(data)
