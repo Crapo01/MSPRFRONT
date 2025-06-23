@@ -4,7 +4,7 @@ import Map from "./pages/Map"
 import Home from "./pages/Home"
 import Footer from "./components/Footer"
 import Partenaires from "./pages/Partenaires"
-import Programme from "./pages/Programme"
+import Programme from "./pages/Program"
 import Details from "./pages/Details"
 import { Container } from "react-bootstrap"
 import './App.css'
