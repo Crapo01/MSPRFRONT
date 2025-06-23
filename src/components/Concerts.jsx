@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ConcertContext } from "../components/context"
 import useLocalStorage from "../hooks/useLocalStorage";
 function Concerts() {
-    const groupe = useContext(ConcertContext);
+    const band = useContext(ConcertContext);
     const [localDatas,setLocalDatas] = useLocalStorage("concerts")
     const [datas, setDatas] = useState(false);
     async function fetchWordPressData() {
@@ -27,7 +27,7 @@ function Concerts() {
         fetchWordPressData();
     }, []);
 
-    function Groupes() {
+    function Bands() {
 
         if (datas) {
             return (
@@ -36,18 +36,19 @@ function Concerts() {
 
                         <Col className="col-12 col-md-6 col-lg-4 p-3 ">
                             <div key={item.id} className={"p-3 border rounded shadow"}>
-                                <h2> {item.acf.nom}</h2>
-                                <img src={item.acf.photo.link} alt="" style={{ width: 100 + '%' }} />
-                                <div>le {item.acf.date} à {item.acf.heure}</div>
+                                <h2> {item.acf.name}</h2>
+                                <img src={item.acf.image.link} alt={item.acf.image_alt_text} style={{ width: 100 + '%' }} />
+                                <div>le {item.acf.date} à {item.acf.time}</div>
                                         <div>Scène: {item.acf.scene}</div>                                                               
                                 <Link to={"/Details"} style={{ textDecoration: 'none' }} >
                                     <Button className='btn-dark m-4'
-                                        onClick={() => (groupe.updateGroupe({ 
-                                            nom: item.acf.nom,
-                                            image: item.acf.photo.link,
+                                        onClick={() => (band.updateBand({ 
+                                            name: item.acf.name,
+                                            image: item.acf.image.link,
+                                            image_alt_text: item.acf.image_alt_text,
                                             description: item.acf.description,
-                                            origine: item.acf.continent,
-                                            programmation: {date: item.acf.date,heure: item.acf.heure},
+                                            origin: item.acf.origin,
+                                            program: {date: item.acf.date,time: item.acf.time},
                                             scene: item.acf.scene
                                             }))}>
                                         plus de details...
@@ -60,7 +61,7 @@ function Concerts() {
                 </Row>
             )
         } else {
-            return <h2><Image src="/images/loading.gif" />Pas de concerts pour le moment</h2>
+            return <h2><Image src="/images/loading.gif" alt="logo de chargement"/ >Pas de concerts pour le moment</h2>
         }
     }
     return (
@@ -70,7 +71,7 @@ function Concerts() {
             <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CONCERTS</h1>
             </div>
             
-            <Groupes />
+            <Bands />
         </div>
 
     );
