@@ -12,7 +12,7 @@ function Concerts() {
             //const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/concerts");  
             const response = await fetch("http://localhost/wordpress/wp-json/acf/v3/concerts");          
             const data = await response.json();
-            //console.log(data)
+            console.log(data)
             if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data);setLocalDatas(data) };
 
         } catch (error) {
@@ -37,14 +37,14 @@ function Concerts() {
                         <Col className="col-12 col-md-6 col-lg-4 p-3 ">
                             <div key={item.id} className={"p-3 border rounded shadow"}>
                                 <h2> {item.acf.name}</h2>
-                                <img src={item.acf.image.link} alt={item.acf.image_alt_text} style={{ width: 100 + '%' }} />
+                                <img src={item.acf.image.url} alt={item.acf.image_alt_text} style={{ width: 100 + '%' }} />
                                 <div>le {item.acf.date} à {item.acf.time}</div>
                                         <div>Scène: {item.acf.scene}</div>                                                               
                                 <Link to={"/Details"} style={{ textDecoration: 'none' }} >
                                     <Button className='btn-dark m-4'
                                         onClick={() => (band.updateBand({ 
                                             name: item.acf.name,
-                                            image: item.acf.image.link,
+                                            image: item.acf.image.url,
                                             image_alt_text: item.acf.image_alt_text,
                                             description: item.acf.description,
                                             origin: item.acf.origin,
