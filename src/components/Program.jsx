@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import useLocalStorage from "../hooks/useLocalStorage";
 
-function Programmation() {
+function Program() {
     const [localDatas, setLocalDatas] = useLocalStorage("programmation")
     const [datas, setDatas] = useState([]);
     const [filterDay, setFilterDay] = useState("tout");
@@ -14,7 +14,7 @@ function Programmation() {
         ((event) =>
             (event.acf.date === filterDay || filterDay === "tout") &&
             (event.acf.type === filterType || filterType === "tout") &&
-            (event.acf.heure.slice(0, 2) >= filterHour || filterHour === "tout") &&
+            (event.acf.time.slice(0, 2) >= filterHour || filterHour === "tout") &&
             (event.acf.scene === filterScene || filterScene === "tout")
         )
 
@@ -39,7 +39,7 @@ function Programmation() {
         fetchWordPressData();
     }, []);
 
-    function Evenement() {
+    function Event() {
         if (datas.length > 0) {
             return (
                 <>
@@ -93,8 +93,8 @@ function Programmation() {
                                     <Col className="col-md-6 col-lg-4" key={item.id} >
                                         <div className={"m-3"}>
                                             <div className={"p-2 border border-success rounded card shadow"} >
-                                                <h2 className="card-title"> {item.acf.nom}</h2>
-                                                <div>le {item.acf.date} à {item.acf.heure}</div>
+                                                <h2 className="card-title"> {item.acf.name}</h2>
+                                                <div>le {item.acf.date} à {item.acf.time}</div>
                                                 <div>Scène: {item.acf.scene}</div>
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@ function Programmation() {
                 </>
             )
         } else {
-            return <h2><Image src="/images/loading.gif" />Pas d'evenements pour le moment</h2>
+            return <h2><Image src="/images/loading.gif" alt="logo de chargement" />Pas d'evenements pour le moment</h2>
         }
     }
 
@@ -119,11 +119,11 @@ function Programmation() {
             <div className="lightningBg border rounded ">
                 <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">PROGRAMMATION</h1>
             </div>
-            <Evenement />
+            <Event />
         </div>
     );
 
 
 };
 
-export default Programmation;
+export default Program;

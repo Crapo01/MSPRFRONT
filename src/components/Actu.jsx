@@ -34,7 +34,7 @@ function Actu() {
         const prioTemp=new Array;
         data.map((item) => (
             
-            item.acf.importance==="prioritaire"? prioTemp.unshift(item):normalTemp.push(item)
+            item.acf.priority==="prioritaire"? prioTemp.unshift(item):normalTemp.push(item)
         ))
         setDatasNormal(normalTemp);
         setDatasPrio(prioTemp);
@@ -49,14 +49,14 @@ function Actu() {
                 
                     {datasNormal.map((item) => (                        
                         <Col key={item.id} className={"p-3 col-12 col-lg-6"} >
-                            <div className={"p-3 border rounded shadow border-primary"}> { ReactHtmlParser (item.acf.texteactu)}  </div>                                                         
+                            <div className={"p-3 border rounded shadow border-primary"}> { ReactHtmlParser (item.acf.textinfo)}  </div>                                                         
                         </Col>
                     ))}
                 </Row>
                 </>
             )
         } else {
-            return <h3><Image src="/images/loading.gif"/>Pas d'infos pour le moment</h3>
+            return <h3><Image src="/images/loading.gif" alt="logo de chargement" />Pas d'infos pour le moment</h3>
         }
     }
     function PrioEvent() {        
@@ -68,7 +68,7 @@ function Actu() {
                 
                     {datasPrio.map((item) => (                        
                         <Col key={item.id} className={"p-3 col-12 col-lg-6"} >
-                            <div className={"p-3 border rounded shadow border-danger"}> { ReactHtmlParser (item.acf.texteactu)}  </div>                                                         
+                            <div className={"p-3 border rounded shadow border-danger"}> { ReactHtmlParser (item.acf.textinfo)}  </div>                                                         
                         </Col>
                     ))}
                 </Row>                

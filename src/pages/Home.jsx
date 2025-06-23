@@ -1,8 +1,7 @@
 import Actu from "../components/Actu";
 import Concerts from "../components/Concerts";
-import Programmation from "../components/Program"
 import Shop from "../components/Shop";
-import CarteMini from "../components/CarteMini";
+import MapMini from "../components/MapMini";
 import Loader from "../components/LocalDatasLoader";
 
 
@@ -13,7 +12,7 @@ function Home() {
             <Concerts />
             <Actu />            
             <Shop/>            
-            <CarteMini/>
+            <MapMini/>
             
       </>  
     );

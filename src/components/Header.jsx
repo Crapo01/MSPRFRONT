@@ -17,8 +17,8 @@ function Header() {
             <Nav.Link><Link to={"/"} style={{ textDecoration: 'none' }}><Button className='btn-light'>ACCUEIL</Button></Link></Nav.Link>
             <Nav.Link> <Link to={"/Map"} style={{ textDecoration: 'none' }}><Button className='btn-light'>CARTE</Button></Link></Nav.Link>
             <Nav.Link> <Link to={"/Concert"} style={{ textDecoration: 'none' }}><Button className='btn-light'>CONCERTS</Button></Link></Nav.Link>
-            <Nav.Link> <Link to={"/Programme"} style={{ textDecoration: 'none' }}><Button className='btn-light'>PROGRAMME</Button></Link></Nav.Link>
-            <Nav.Link> <Link to={"/Partenaires"}style={{ textDecoration: 'none' }}><Button className='btn-light'>PARTENAIRES</Button></Link></Nav.Link>
+            <Nav.Link> <Link to={"/Program"} style={{ textDecoration: 'none' }}><Button className='btn-light'>PROGRAMME</Button></Link></Nav.Link>
+            <Nav.Link> <Link to={"/Partnair"}style={{ textDecoration: 'none' }}><Button className='btn-light'>PARTENAIRES</Button></Link></Nav.Link>
             <Nav.Link> <Link to={"/Faq"}style={{ textDecoration: 'none' }}><Button className='btn-light'>FAQ</Button></Link></Nav.Link>            
             {/* <Nav.Link target="_blank"  href="https://nationsoundluc.rf.gd/wp/boutique/"><Button className='btn-light'>BOUTIQUE</Button></Nav.Link>   */}
             <Nav.Link target="_blank"  href="http://localhost/wordpress/boutique/"><Button className='btn-light'>BOUTIQUE</Button></Nav.Link>          

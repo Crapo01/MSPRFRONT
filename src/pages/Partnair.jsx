@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { Col, Image, Row } from "react-bootstrap";
 
 
-function Partenaires() {
+function Partnair() {
 
 
 
@@ -79,4 +78,4 @@ function Partenaires() {
     );
 };
 
-export default Partenaires;
+export default Partnair;
