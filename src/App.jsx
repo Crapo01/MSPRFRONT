@@ -18,12 +18,12 @@ import Concert from "./pages/Concert"
 
 function App() {
   
-  const [groupe,setGroupe]= useState();
+  const [band,setBand]= useState();
   
   return (    
     <ConcertContext.Provider value={{
-      updateGroupe: (newGroupe)=>setGroupe(newGroupe),
-      groupe: groupe
+      updateBand: (newBand)=>setBand(newBand),
+      band: band
       }}>
        <Container >
       <Header></Header>
