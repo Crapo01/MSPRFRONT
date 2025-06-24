@@ -1,6 +1,6 @@
 
 import { MapContainer, Marker, TileLayer, Tooltip } from "react-leaflet";
-import { Image, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
@@ -57,7 +57,7 @@ useEffect(() => {
     <li key={item.id}>
 
       {<Marker position={[item.acf.lat, item.acf.lon]} >
-        <Tooltip>{item.acf.nom} </Tooltip>        
+        <Tooltip>{item.acf.name} </Tooltip>        
       </Marker>}
     </li>
   ))}
