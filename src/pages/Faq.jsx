@@ -1,82 +1,42 @@
-import { useEffect, useState } from "react";
-import { Col, Image, Row } from "react-bootstrap";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { Col, Row } from "react-bootstrap";
 
 function Faq() {
-    const [datas, setDatas] = useState([]);
-    const [localDatas,setLocalDatas] = useLocalStorage("questions")
-
-    
-    async function fetchWordPressData() {
-        try {
-            const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/questions");
-            // const response = await fetch("http://localhost/ns_hl_wp/wp-json/acf/v3/questions");
-            const data = await response.json();
-            //console.log(data)
-            if (data.code === "rest_no_route") { throw "error:rest_no_route" }
-            else {
-                setDatas(data);
-                setLocalDatas(data)
-            };
-
-        } catch (error) {
-            //("Une erreur est survenue dans l'appel API: ")
-            //(error)
-        }
-    }
-    useEffect(() => {
-        //(localDatas);
-        if (localDatas) {//("uselocalstorage");
-            setDatas(localDatas)}
-        fetchWordPressData();
-    }, []);
-    
-
-    
-
-    function Question() {
-        if (datas.length > 0) {
-            return (
-                <>
-                    <Row className="lightningBg border rounded ">
-                    <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">FOIRE AUX QUESTIONS</h1>
-                        {datas.map((item) => (
-
-                            <Col className="col-11 m-2 bg-light border rounded d-flex flex-column" key={item.id }>
-
-                                <h2 className="text-center bg-light border rounded shadow "> {item.acf.question}</h2>
-                                <p className="text-center p-3 "> {item.acf.reponse}</p>
-                                
-
-                            </Col>
-                        ))}
-                    </Row>
-                </>
-            )
-        } else return (
-            <>
-                <Row className="lightningBg border rounded ">
-                <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold ">FOIRE AUX QUESTIONS</h1>
-
-                </Row>
-                <div className=" p-3 m-2 bg-light border rounded shadow ">
-                <Image src="/images/loading.gif" width={300 + 'px'} className="p-5 m-5" />
-                </div>
-            </>
-        )
-
-    }
-
-
-
-
-
     return (
-        <div>
+        <>
+            <Row className="lightningBg border rounded ">
+                <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">FOIRE AUX QUESTIONS</h1>
 
-            <Question />
-        </div>
-    );
-};
+                <Col className="col-11 m-2 bg-light border rounded d-flex flex-column">
+                    <h2 className="text-center bg-light border rounded shadow ">Les animaux sont-ils autorisés ? </h2>
+                    <p className="text-center p-3 ">Hélas, nos amis les animaux ne sont pas autorisés sur le site, à l’exception des chiens-guide. </p>
+                </Col>
+
+                <Col className="col-11 m-2 bg-light border rounded d-flex flex-column">
+                    <h2 className="text-center bg-light border rounded shadow ">Quels sont les moyens d’accès au site? </h2>
+                    <p className="text-center p-3 ">métro ligne 1, RER ligne A, bus </p>
+                </Col>
+
+                <Col className="col-11 m-2 bg-light border rounded d-flex flex-column">
+                    <h2 className="text-center bg-light border rounded shadow ">Quels sont les objets interdits sur le site du festival? </h2>
+                    <p className="text-center p-3 ">Sont interdits : boissons, bouteilles en verre, gourdes en verre, alcool, armes, tout objet pouvant servir de projectile ou nuire au public, casques, skateboard, trottinettes, animaux (sauf chiens-guide d’aveugles), téléobjectifs, caméras, perches à selfies, couteaux, pointeurs laser, drones… Toute personne refusant de se séparer d’un objet non autorisé se verra interdite d’accès. La sécurité du festival se réserve le droit de déroger à ces règles si elle l’estime nécessaire. Des consignes sont disponibles aux entrées.
+
+ </p>
+                </Col>
+
+                <Col className="col-11 m-2 bg-light border rounded d-flex flex-column">
+                    <h2 className="text-center bg-light border rounded shadow ">Qu’est-ce qui est autorisé sur le site du festival ?</h2>
+                    <p className="text-center p-3 ">Sont autorisés sur le site : gourdes (sauf en verre), bouteilles en plastique, téléphones portables, pique-nique sans boisson, petits parapluies si le temps le justifie</p>
+                </Col>
+
+                <Col className="col-11 m-2 bg-light border rounded d-flex flex-column">
+                    <h2 className="text-center bg-light border rounded shadow ">Quels types de passe seront mis en vente ?</h2>
+                    <p className="text-center p-3 ">Lors de la mise en vente, 2 types de passe seront disponibles à l’achat : 1 jour et 3 jours</p>
+                </Col>
+
+            </Row>
+        </>
+    )
+}
+
 
 export default Faq;
