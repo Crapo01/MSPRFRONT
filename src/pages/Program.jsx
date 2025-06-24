@@ -3,11 +3,11 @@ import Programing from "../components/Program";
 
 
 
-function Program() {
+function ProgramPage() {
     
     return (       
     <Programing/>      
     );
 };
 
-export default Program;
+export default ProgramPage;

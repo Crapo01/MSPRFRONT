@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip, useMap } from "react-leaflet";
 import * as L from "leaflet";
-import { Button, Col, Image, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import RoutingMachine from "./RoutingMachine";
 import { Link } from "react-router-dom";
 import { ConcertContext } from "./context";
@@ -43,14 +43,14 @@ function Carte(props) {
     });
 
 
-  const groupe = useContext(ConcertContext)
+  const band = useContext(ConcertContext)
   const [localDatas, setLocalDatas] = useLocalStorage("pointeurs")
   const [localConcerts, setLocalConcerts] = useLocalStorage("concerts")
   const [datas, setDatas] = useState([]);
   const [prog, setProg] = useState([]);
   const [filteredScenes, setFilteredScenes] = useState([]);
   const [position, setPosition] = useState(null);
-  const [arrivee, setArrivee] = useState(null);
+  const [arrival, setArrival] = useState(null);
   const [locator, setLocator] = useState(false);
   const [virtualPosition, setVirtualposition] = useState(true);
   const [filter, setFilter] = useState("tout");
@@ -106,8 +106,8 @@ function Carte(props) {
 
     let filteredProg = prog.filter((e) =>
     (
-      parseInt(new Date().toLocaleTimeString().substr(0, 2)) <= parseInt(e.acf.heure.substr(0, 2) + 2) &&
-      parseInt(new Date().toLocaleTimeString().substr(0, 2)) >= parseInt(e.acf.heure.substr(0, 2)) &&
+      parseInt(new Date().toLocaleTimeString().substr(0, 2)) <= parseInt(e.acf.time.substr(0, 2) + 2) &&
+      parseInt(new Date().toLocaleTimeString().substr(0, 2)) >= parseInt(e.acf.time.substr(0, 2)) &&
       parseInt(e.acf.date) === parseInt(new Date().toLocaleDateString())
 
     )
@@ -117,9 +117,9 @@ function Carte(props) {
     //console.log("filteredProg")
     //console.log(datas)
     filteredProg.map((e) => (datas.map((ee) => {
-      const str = ee.acf.nom;
+      const str = ee.acf.name;
       //console.log(e.acf.scene+":"+str.substr(6));
-      //console.log(parseInt(e.acf.heure.substr(0,2))+2)
+      //console.log(parseInt(e.acf.time.substr(0,2))+2)
       //console.log(parseInt(new Date().toLocaleTimeString().substr(0,2)))
 
       if (e.acf.scene === str.substr(6)) temp.push({ prog: e, mark: ee })
@@ -164,14 +164,14 @@ function Carte(props) {
       }
 
       map.on('locationfound', onLocationFound);
-      setArrivee(position);
+      setArrival(position);
     }
     return position === null ? null : (
       <>
         <Marker position={position} icon={posIcon}>
           <Popup>Vous etes ici</Popup>
         </Marker>
-        <RoutingMachine start={position} end={arrivee} />
+        <RoutingMachine start={position} end={arrival} />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -227,14 +227,14 @@ function Carte(props) {
                   <li key={item.id}>
 
                     {<Marker position={[item.acf.lat, item.acf.lon]} icon={selectColor(item.acf.type)}>
-                      <Tooltip>{item.acf.nom} </Tooltip>
+                      <Tooltip>{item.acf.name} </Tooltip>
                       <Popup>
-                        <h2>{item.acf.nom}</h2>
+                        <h2>{item.acf.name}</h2>
                         <p>{item.acf.description}</p>
-                        <a href={item.acf.lien} target="_blank">{item.acf.lien}</a>
+                        <a href={item.acf.link} target="_blank">{item.acf.link}</a>
                         <br></br>
                         {locator ?
-                          <button onClick={() => setArrivee([item.acf.lat, item.acf.lon])}>Y aller ...</button> : null}
+                          <button onClick={() => setArrival([item.acf.lat, item.acf.lon])}>Y aller ...</button> : null}
                       </Popup>
                     </Marker>}
                   </li>
@@ -252,24 +252,25 @@ function Carte(props) {
 
                     {<Marker position={[item.mark.acf.lat, item.mark.acf.lon]} icon={selectColor(item.mark.acf.type)}>
                       <Popup>
-                        <h2>{item.mark.acf.nom}</h2>
-                        <h6>En cours: {item.prog.acf.nom}</h6>
+                        <h2>{item.mark.acf.name}</h2>
+                        <h6>En cours: {item.prog.acf.name}</h6>
                         <Link to={"/Details"} style={{ textDecoration: 'none' }} >
                           <Button className='btn-dark my-2'
-                            onClick={() => (groupe.updateGroupe({
-                              nom: item.prog.acf.nom,
-                              image: item.prog.acf.photo.link,
-                              description: item.prog.acf.description,
-                              origine: item.prog.acf.continent,
-                              programmation: { date: item.prog.acf.date, heure: item.prog.acf.heure },
-                              scene: item.prog.acf.scene
-                            }))}>
+                            onClick={() => (band.updateBand({ 
+                                            name: item.prog.acf.name,
+                                            image: item.prog.acf.image.url,
+                                            image_alt_text: item.prog.acf.image_alt_text,
+                                            description: item.prog.acf.description,
+                                            origin: item.prog.acf.origin,
+                                            program: {date: item.prog.acf.date,time: item.prog.acf.time},
+                                            scene: item.prog.acf.scene
+                                            }))}>
                             plus de details...
                           </Button>
                         </Link>
                         <br />
                         {locator ?
-                          <Button className='btn-dark my-2' onClick={() => setArrivee([item.mark.acf.lat, item.mark.acf.lon])}>Y aller ...</Button> : null}
+                          <Button className='btn-dark my-2' onClick={() => setArrival([item.mark.acf.lat, item.mark.acf.lon])}>Y aller ...</Button> : null}
                       </Popup>
                     </Marker>}
                   </li>

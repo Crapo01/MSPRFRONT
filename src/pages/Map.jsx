@@ -1,4 +1,4 @@
-import Carte from "../components/Carte";
+import MapBig from "../components/MapBig";
 
 
 
@@ -6,7 +6,7 @@ function Map() {
     
     return (  
              
-    <Carte h={"100vh"} w={"100%"}/> 
+    <MapBig h={"100vh"} w={"100%"}/> 
          
     );
 };

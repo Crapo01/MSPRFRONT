@@ -3,8 +3,8 @@ import Header from "./components/Header"
 import Map from "./pages/Map"
 import Home from "./pages/Home"
 import Footer from "./components/Footer"
-import Partenaires from "./pages/Partenaires"
-import Programme from "./pages/Program"
+import Partnair from "./pages/Partnair"
+import Program from "./pages/Program"
 import Details from "./pages/Details"
 import { Container } from "react-bootstrap"
 import './App.css'
@@ -31,9 +31,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Map" element={<Map />} />
-        <Route path="/Partenaires" element={<Partenaires />} />
+        <Route path="/Partnair" element={<Partnair />} />
         <Route path="/Concert" element={<Concert />} />
-        <Route path="/Programme" element={<Programme />} />
+        <Route path="/Program" element={<Program />} />
         <Route path="/Details" element={<Details />} />
         <Route path="/Faq" element={<Faq />} /> 
         <Route path="/Mentions" element={<Mentions />} />       
