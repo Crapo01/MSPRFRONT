@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Col,Image,Row } from "react-bootstrap";
 import ReactHtmlParser from 'react-html-parser'; 
 import useLocalStorage from "../hooks/useLocalStorage";
+import {BASE_URL} from '../config/config.js';
 
 function Actu() {
     const [localDatas,setLocalDatas] = useLocalStorage("actu")
@@ -11,7 +12,7 @@ function Actu() {
     async function fetchWordPressData() {
         try {
             //const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/actu");
-             const response = await fetch("http://localhost/wordpress/wp-json/acf/v3/actu");
+             const response = await fetch(`${BASE_URL}/wp-json/acf/v3/actu`);
             const data = await response.json();
             //console.log(data)
             if (data.code === "rest_no_route") {throw "error:rest_no_route"} else {sortDatas(data)} ;

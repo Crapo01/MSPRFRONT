@@ -6,7 +6,7 @@ import RoutingMachine from "./RoutingMachine";
 import { Link } from "react-router-dom";
 import { ConcertContext } from "./context";
 import useLocalStorage from "../hooks/useLocalStorage";
-
+import {BASE_URL} from '../config/config.js';
 
 
 function Carte(props) {
@@ -79,12 +79,12 @@ function Carte(props) {
     //console.log(datas,filteredScenes)
     try {
       //let response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/pointeur");
-      let response = await fetch("http://localhost/wordpress/wp-json/acf/v3/pointeur");
+      let response = await fetch(`${BASE_URL}/wp-json/acf/v3/pointeur`);
       let data = await response.json();
       //console.log("data1:"+data)
       if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data); setLocalDatas(data) };
       //response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/concerts");
-      response = await fetch("http://localhost/wordpress/wp-json/acf/v3/concerts");
+      response = await fetch(`${BASE_URL}/wp-json/acf/v3/concerts`);
       data = await response.json();
       //console.log("data2")
       //console.log(data)
