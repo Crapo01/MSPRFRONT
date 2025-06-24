@@ -4,7 +4,7 @@ import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useEffect, useState } from "react";
-
+import {BASE_URL} from '../config/config.js';
 
 function CarteMini() {
   
@@ -13,7 +13,7 @@ function CarteMini() {
   async function fetchWordPressData() {
     try {
         //const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/pointeur");
-        const response = await fetch("http://localhost/wordpress/wp-json/acf/v3/pointeur");
+        const response = await fetch(`${BASE_URL}/wp-json/acf/v3/pointeur`);
         const data = await response.json();
         //console.log(data)
         if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data);setLocalDatas(data) };

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button, Image } from 'react-bootstrap';
+import {BASE_URL} from '../config/config.js';
 
 function Header() {
     return (
@@ -21,7 +21,7 @@ function Header() {
             <Nav.Link> <Link to={"/Partnair"}style={{ textDecoration: 'none' }}><Button className='btn-light'>PARTENAIRES</Button></Link></Nav.Link>
             <Nav.Link> <Link to={"/Faq"}style={{ textDecoration: 'none' }}><Button className='btn-light'>FAQ</Button></Link></Nav.Link>            
             {/* <Nav.Link target="_blank"  href="https://nationsoundluc.rf.gd/wp/boutique/"><Button className='btn-light'>BOUTIQUE</Button></Nav.Link>   */}
-            <Nav.Link target="_blank"  href="http://localhost/wordpress/boutique/"><Button className='btn-light'>BOUTIQUE</Button></Nav.Link>          
+            <Nav.Link target="_blank"  href={`${BASE_URL}/boutique/`}><Button className='btn-light'>BOUTIQUE</Button></Nav.Link>          
           </Nav>
         </Navbar.Collapse>
     </Navbar>

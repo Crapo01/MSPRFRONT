@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Image, Row } from "react-bootstrap";
 import useLocalStorage from "../hooks/useLocalStorage";
+import {BASE_URL} from '../config/config.js';
 
 function Program() {
     const [localDatas, setLocalDatas] = useLocalStorage("programmation")
@@ -21,7 +22,7 @@ function Program() {
     async function fetchWordPressData() {
         try {
             //const response = await fetch("https://nationsoundluc.rf.gd/wp/wp-json/acf/v3/programmation");
-            const response = await fetch("http://localhost/wordpress/wp-json/acf/v3/programmation");
+            const response = await fetch(`${BASE_URL}/wp-json/acf/v3/programmation`);
             const data = await response.json();
             //console.log(data)
             if (data.code === "rest_no_route") { throw "error:rest_no_route" } else { setDatas(data); setLocalDatas(data) };
