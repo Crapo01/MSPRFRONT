@@ -183,8 +183,8 @@ function Carte(props) {
   return (
     <>
       <Row className="  m-md-5 p-2 border rounded bg-light">
-        <div className="lightningBg border rounded ">
-          <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CARTE</h1>
+        <div className="lightningBg border rounded relative">
+          <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CARTE</h1>          
         </div>
         <Col className="d-flex justify-content-center">
           <div className="p-2">
@@ -228,13 +228,14 @@ function Carte(props) {
 
                     {<Marker position={[item.acf.lat, item.acf.lon]} icon={selectColor(item.acf.type)}>
                       <Tooltip>{item.acf.name} </Tooltip>
-                      <Popup>
+                      <Popup className="relative">
                         <h2>{item.acf.name}</h2>
                         <p>{item.acf.description}</p>
                         <a href={item.acf.link} target="_blank">{item.acf.link}</a>
                         <br></br>
                         {locator ?
                           <button onClick={() => setArrival([item.acf.lat, item.acf.lon])}>Y aller ...</button> : null}
+                      
                       </Popup>
                     </Marker>}
                   </li>

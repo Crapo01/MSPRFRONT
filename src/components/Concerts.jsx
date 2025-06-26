@@ -37,7 +37,7 @@ function Concerts() {
                     {datas.map((item) => (
 
                         <Col className="col-12 col-md-6 col-lg-4 p-3 ">
-                            <div key={item.id} className={"p-3 border rounded shadow"}>
+                            <div key={item.id} className={"p-3 border rounded shadow relative"}>
                                 <h2> {item.acf.name}</h2>
                                 <img src={item.acf.image.url} alt={item.acf.image_alt_text} style={{ width: 100 + '%' }} />
                                 <div>le {item.acf.date} à {item.acf.time}</div>
@@ -56,7 +56,7 @@ function Concerts() {
                                         plus de details...
                                     </Button>
                                 </Link>
-
+                                
                             </div>
                         </Col>
                     ))}
@@ -69,8 +69,8 @@ function Concerts() {
     return (
 
         <div className={"p-3 m-md-5 border rounded bg-light"}>
-            <div className="lightningBg border rounded">
-            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CONCERTS</h1>
+            <div className="lightningBg border rounded relative">
+            <h1 className="sectionTitle text-center text-light p-3 fs-1 fw-bold">CONCERTS</h1>            
             </div>
             
             <Bands />
